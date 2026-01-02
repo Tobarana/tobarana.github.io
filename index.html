@@ -16,9 +16,11 @@
             --green-dark: #1a3a28;
             --green-glow: #00ff88;
             --green-soft: #4a9868;
-            --gold: #d4af37;
-            --gold-light: #ffd700;
-            --gold-glow: rgba(212, 175, 55, 0.6);
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --gold-warm: #d4a853;
+            --gold-glow: rgba(201, 162, 39, 0.6);
+            --gold-shine: rgba(232, 212, 139, 0.8);
             --cyan: #00ffc8;
             --cyan-glow: rgba(0, 255, 200, 0.5);
             --indigo: #4a6cf7;
@@ -47,28 +49,27 @@
         }
 
         /* ==========================================
-           CUSTOM CURSOR - MAGICAL ORB
+           CUSTOM CURSOR - GOLDEN ORB
         ========================================== */
         .cursor-orb {
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--cyan), var(--green-glow));
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, var(--gold-light), var(--gold));
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 10001;
             box-shadow: 
-                0 0 20px var(--cyan-glow),
-                0 0 40px var(--cyan-glow),
-                0 0 60px rgba(0, 255, 136, 0.3);
+                0 0 15px var(--gold-glow),
+                0 0 30px var(--gold-glow),
+                0 0 45px rgba(201, 162, 39, 0.3);
             transition: transform 0.1s ease;
-            mix-blend-mode: screen;
         }
 
         .cursor-ring {
-            width: 50px;
-            height: 50px;
-            border: 1px solid rgba(0, 255, 200, 0.3);
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(201, 162, 39, 0.4);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -77,22 +78,44 @@
         }
 
         .cursor-ring.hover {
-            width: 70px;
-            height: 70px;
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
+            width: 65px;
+            height: 65px;
+            border-color: var(--gold-light);
+            background: rgba(201, 162, 39, 0.1);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
-        /* Firefly trail */
-        .firefly {
+        /* Click sparkle effect */
+        .click-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            font-size: 1.2rem;
+            animation: sparkle-fly 1s ease-out forwards;
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        @keyframes sparkle-fly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.5) rotate(180deg);
+            }
+        }
+
+        /* Golden trail particles */
+        .golden-trail {
             position: fixed;
             width: 6px;
             height: 6px;
-            background: var(--green-glow);
+            background: var(--gold-light);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            box-shadow: 0 0 10px var(--green-glow), 0 0 20px var(--cyan);
+            box-shadow: 0 0 8px var(--gold-glow), 0 0 15px var(--gold);
         }
 
         /* ==========================================
@@ -113,15 +136,14 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 120%;
+            height: 100%;
             background-size: cover;
             background-position: center;
-            will-change: transform;
         }
 
         .parallax-layer.bg-main {
             background-image: url('assets/temple-bg.webp');
-            filter: brightness(0.6) saturate(1.3);
+            filter: brightness(0.5) saturate(1.2);
         }
 
         .parallax-overlay {
@@ -131,8 +153,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse at 50% 100%, transparent 0%, var(--bg-deep) 80%),
-                linear-gradient(to bottom, rgba(5, 13, 5, 0.2), rgba(5, 13, 5, 0.6));
+                radial-gradient(ellipse at 50% 50%, transparent 0%, var(--bg-deep) 75%),
+                linear-gradient(to bottom, rgba(5, 13, 5, 0.3), rgba(5, 13, 5, 0.5));
         }
 
         /* ==========================================
@@ -181,18 +203,18 @@
         }
 
         /* ==========================================
-           MAGIC RUNE CIRCLE
+           MAGIC RUNE CIRCLE - ELEGANT GOLD
         ========================================== */
         .rune-circle {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
+            width: 900px;
+            height: 900px;
             z-index: 2;
             pointer-events: none;
-            opacity: 0.15;
+            opacity: 0.12;
         }
 
         .rune-ring {
@@ -201,26 +223,30 @@
             left: 50%;
             transform: translate(-50%, -50%);
             border-radius: 50%;
-            border: 1px solid var(--gold);
-            box-shadow: 0 0 20px var(--gold-glow);
+            border: 1px solid var(--gold-warm);
+            box-shadow: 
+                0 0 30px var(--gold-glow),
+                inset 0 0 30px rgba(201, 162, 39, 0.1);
         }
 
         .rune-ring:nth-child(1) {
             width: 100%;
             height: 100%;
-            animation: rotate-slow 60s linear infinite;
+            animation: rotate-slow 80s linear infinite;
+            border-style: dashed;
         }
 
         .rune-ring:nth-child(2) {
-            width: 80%;
-            height: 80%;
-            animation: rotate-slow 45s linear infinite reverse;
+            width: 75%;
+            height: 75%;
+            animation: rotate-slow 60s linear infinite reverse;
         }
 
         .rune-ring:nth-child(3) {
-            width: 60%;
-            height: 60%;
-            animation: rotate-slow 30s linear infinite;
+            width: 50%;
+            height: 50%;
+            animation: rotate-slow 40s linear infinite;
+            border-width: 2px;
         }
 
         @keyframes rotate-slow {
@@ -401,6 +427,7 @@
             letter-spacing: 2px;
             padding: 18px 40px;
             border: none;
+            border-radius: 30px;
             cursor: none;
             text-decoration: none;
             position: relative;
@@ -409,26 +436,39 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            background: linear-gradient(135deg, var(--gold), var(--gold-warm), var(--gold-light));
+            background-size: 200% 200%;
             color: var(--bg-deep);
-            box-shadow: 0 0 30px var(--gold-glow);
+            box-shadow: 
+                0 0 20px var(--gold-glow),
+                0 0 40px rgba(201, 162, 39, 0.3);
+            animation: btn-shimmer 3s ease infinite;
+        }
+
+        @keyframes btn-shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 40px var(--gold-glow), 0 0 60px var(--gold-glow);
+            box-shadow: 
+                0 10px 30px var(--gold-glow), 
+                0 0 50px var(--gold-glow),
+                0 0 80px rgba(201, 162, 39, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 1px solid var(--white-faint);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            border-radius: 30px;
         }
 
         .btn-secondary:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
-            box-shadow: 0 0 30px var(--cyan-glow);
+            background: rgba(201, 162, 39, 0.1);
+            border-color: var(--gold-light);
+            box-shadow: 0 0 30px var(--gold-glow);
         }
 
         /* Hero Character */
@@ -623,6 +663,7 @@
             overflow: hidden;
             background: var(--bg-mid);
             border: 1px solid var(--white-faint);
+            border-radius: 20px;
             transition: all 0.5s ease;
         }
 
@@ -634,12 +675,15 @@
             z-index: 1;
             opacity: 0;
             transition: opacity 0.5s ease;
+            border-radius: 20px;
         }
 
         .gallery-item:hover {
             transform: translateY(-10px);
             border-color: var(--gold);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+            box-shadow: 
+                0 20px 60px rgba(201, 162, 39, 0.2),
+                0 0 30px var(--gold-glow);
         }
 
         .gallery-item:hover::before {
@@ -652,6 +696,7 @@
             object-fit: cover;
             object-position: top;
             transition: transform 0.5s ease;
+            border-radius: 20px;
         }
 
         .gallery-item:hover img {
@@ -702,16 +747,19 @@
             padding: 40px 50px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--white-faint);
+            border-radius: 20px;
             text-decoration: none;
             color: var(--white);
             transition: all 0.4s ease;
         }
 
         .link-card:hover {
-            border-color: var(--cyan);
+            border-color: var(--gold);
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 255, 200, 0.15);
-            background: rgba(0, 255, 200, 0.05);
+            box-shadow: 
+                0 20px 50px rgba(201, 162, 39, 0.15),
+                0 0 30px var(--gold-glow);
+            background: rgba(201, 162, 39, 0.05);
         }
 
         .link-card .icon {
@@ -726,14 +774,18 @@
         }
 
         .link-card:hover .link-icon {
-            fill: var(--cyan);
-            filter: drop-shadow(0 0 10px var(--cyan-glow));
+            fill: var(--gold-light);
+            filter: drop-shadow(0 0 10px var(--gold-glow));
         }
 
         .link-card span {
             font-family: 'Cinzel', serif;
             font-size: 0.9rem;
             letter-spacing: 3px;
+        }
+
+        .link-card:hover span {
+            color: var(--gold-light);
         }
 
         /* ==========================================
@@ -1078,7 +1130,7 @@
         }
 
         // ==========================================
-        // CUSTOM CURSOR
+        // CUSTOM CURSOR - GOLDEN
         // ==========================================
         const cursorOrb = document.querySelector('.cursor-orb');
         const cursorRing = document.querySelector('.cursor-ring');
@@ -1086,47 +1138,77 @@
         let orbX = 0, orbY = 0;
         let ringX = 0, ringY = 0;
 
-        const fireflies = [];
-        const maxFireflies = 15;
+        const goldenTrails = [];
+        const maxTrails = 12;
 
         document.addEventListener('mousemove', (e) => {
             orbX = e.clientX;
             orbY = e.clientY;
 
-            // Create firefly trail
-            if (fireflies.length < maxFireflies && Math.random() > 0.7) {
-                const firefly = document.createElement('div');
-                firefly.className = 'firefly';
-                firefly.style.left = orbX + 'px';
-                firefly.style.top = orbY + 'px';
-                document.body.appendChild(firefly);
+            // Create golden trail
+            if (goldenTrails.length < maxTrails && Math.random() > 0.6) {
+                const trail = document.createElement('div');
+                trail.className = 'golden-trail';
+                trail.style.left = orbX + 'px';
+                trail.style.top = orbY + 'px';
+                document.body.appendChild(trail);
 
-                fireflies.push({
-                    element: firefly,
+                goldenTrails.push({
+                    element: trail,
                     life: 1
                 });
             }
         });
 
+        // ==========================================
+        // CLICK SPARKLE EFFECT
+        // ==========================================
+        const sparkleIcons = ['✦', '✧', '❋', '✺', '✵', '❀', '✿', '❁', '⋆', '｡', '°', '✩', '☆', '★'];
+        
+        document.addEventListener('click', (e) => {
+            // Create multiple sparkles on click
+            const sparkleCount = 8 + Math.floor(Math.random() * 5);
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'click-sparkle';
+                sparkle.textContent = sparkleIcons[Math.floor(Math.random() * sparkleIcons.length)];
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.color = Math.random() > 0.5 ? '#e8d48b' : '#c9a227';
+                
+                // Random direction
+                const angle = (Math.PI * 2 / sparkleCount) * i + Math.random() * 0.5;
+                const distance = 50 + Math.random() * 80;
+                sparkle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                sparkle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                
+                document.body.appendChild(sparkle);
+                
+                // Remove after animation
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
         function animateCursor() {
-            cursorOrb.style.left = orbX - 10 + 'px';
-            cursorOrb.style.top = orbY - 10 + 'px';
+            cursorOrb.style.left = orbX - 8 + 'px';
+            cursorOrb.style.top = orbY - 8 + 'px';
 
-            ringX += (orbX - ringX) * 0.1;
-            ringY += (orbY - ringY) * 0.1;
-            cursorRing.style.left = ringX - 25 + 'px';
-            cursorRing.style.top = ringY - 25 + 'px';
+            ringX += (orbX - ringX) * 0.12;
+            ringY += (orbY - ringY) * 0.12;
+            cursorRing.style.left = ringX - 22.5 + 'px';
+            cursorRing.style.top = ringY - 22.5 + 'px';
 
-            // Update fireflies
-            for (let i = fireflies.length - 1; i >= 0; i--) {
-                const f = fireflies[i];
-                f.life -= 0.03;
-                f.element.style.opacity = f.life;
-                f.element.style.transform = `scale(${f.life})`;
+            // Update golden trails
+            for (let i = goldenTrails.length - 1; i >= 0; i--) {
+                const t = goldenTrails[i];
+                t.life -= 0.04;
+                t.element.style.opacity = t.life;
+                t.element.style.transform = `scale(${t.life})`;
 
-                if (f.life <= 0) {
-                    f.element.remove();
-                    fireflies.splice(i, 1);
+                if (t.life <= 0) {
+                    t.element.remove();
+                    goldenTrails.splice(i, 1);
                 }
             }
 
@@ -1141,22 +1223,12 @@
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorRing.classList.add('hover');
-                cursorOrb.style.transform = 'scale(1.5)';
+                cursorOrb.style.transform = 'scale(1.3)';
             });
             el.addEventListener('mouseleave', () => {
                 cursorRing.classList.remove('hover');
                 cursorOrb.style.transform = 'scale(1)';
             });
-        });
-
-        // ==========================================
-        // PARALLAX SCROLL
-        // ==========================================
-        const parallaxBg = document.querySelector('.parallax-layer.bg-main');
-
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
         });
 
         // ==========================================
