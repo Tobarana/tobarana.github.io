@@ -274,11 +274,22 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo:hover img {
+            filter: drop-shadow(0 0 15px var(--green-glow));
         }
 
         .nav-logo img {
             height: 40px;
             filter: drop-shadow(0 0 10px var(--green-glow));
+            transition: filter 0.3s ease;
         }
 
         .nav-logo span {
@@ -806,11 +817,21 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-logo:hover img {
+            filter: drop-shadow(0 0 10px var(--gold-glow));
         }
 
         .footer-logo img {
             height: 30px;
             opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         footer p {
@@ -891,7 +912,15 @@
 
         @media (max-width: 768px) {
             nav {
-                padding: 20px 25px;
+                padding: 15px 20px;
+            }
+
+            .nav-logo img {
+                height: 30px;
+            }
+
+            .nav-logo span {
+                font-size: 1rem;
             }
 
             .nav-links {
@@ -899,30 +928,157 @@
             }
 
             section {
-                padding: 80px 25px;
+                padding: 60px 20px;
             }
 
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
+            .hero-tag {
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+                padding: 8px 15px;
+            }
+
+            .hero-title-jp {
+                font-size: 2.5rem;
+                letter-spacing: 8px;
+            }
+
+            .hero-title-en {
+                font-size: 0.9rem;
+                letter-spacing: 5px;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+                line-height: 1.9;
+                padding: 0 10px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
                 gap: 15px;
             }
 
+            .btn {
+                padding: 15px 35px;
+                font-size: 0.85rem;
+                width: auto;
+                min-width: 200px;
+            }
+
+            .character-img {
+                max-height: 50vh;
+            }
+
+            /* About Section Mobile */
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-text .subtitle {
+                font-size: 0.8rem;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+                line-height: 2;
+            }
+
+            .profile-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                text-align: left;
+                padding: 0 20px;
+            }
+
+            .profile-list li {
+                font-size: 0.9rem;
+            }
+
+            .crystal-img {
+                width: 120px;
+            }
+
+            /* Gallery Mobile - 關鍵修復 */
+            .gallery {
+                padding: 80px 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+                letter-spacing: 5px;
+            }
+
+            .section-header p {
+                font-size: 0.85rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                max-width: 100%;
+            }
+
+            .gallery-item {
+                aspect-ratio: 3/4;
+                border-radius: 12px;
+            }
+
+            .gallery-item img {
+                border-radius: 12px;
+            }
+
+            .gallery-item .label {
+                font-size: 0.7rem;
+                bottom: 10px;
+                left: 10px;
+            }
+
+            /* Links Mobile - 關鍵修復 */
+            .links {
+                padding: 60px 20px 80px;
+            }
+
             .links-grid {
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                width: 100%;
+                max-width: 400px;
             }
 
             .link-card {
-                width: 100%;
-                max-width: 300px;
+                padding: 20px 15px;
+                border-radius: 12px;
             }
 
+            .link-card .link-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .link-card span {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+            }
+
+            /* Footer Mobile */
             footer {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
+                padding: 25px 20px;
                 text-align: center;
             }
 
+            footer p {
+                font-size: 0.7rem;
+            }
+
+            .footer-logo img {
+                height: 25px;
+            }
+
+            /* Hide heavy effects on mobile */
             .cursor-orb,
             .cursor-ring {
                 display: none;
@@ -933,7 +1089,41 @@
             }
 
             .rune-circle {
-                display: none;
+                width: 400px;
+                height: 400px;
+                opacity: 0.08;
+            }
+
+            .decorative-line span {
+                width: 40px;
+            }
+
+            .decorative-line img {
+                height: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title-jp {
+                font-size: 2rem;
+                letter-spacing: 5px;
+            }
+
+            .gallery-grid {
+                gap: 8px;
+            }
+
+            .gallery-item {
+                border-radius: 10px;
+            }
+
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .link-card {
+                padding: 18px 12px;
             }
         }
     </style>
@@ -961,10 +1151,10 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="nav-logo">
+        <a href="https://www.youtube.com/@AinoMori" target="_blank" class="nav-logo">
             <img src="assets/owlpple.webp" alt="Owlpple">
             <span>AINOMORI</span>
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#about">關於</a></li>
             <li><a href="#gallery">衣裝</a></li>
@@ -989,7 +1179,7 @@
                     在這片神秘的森林深處，她靜靜等待著每一位旅行者的到來。
                 </p>
                 <div class="hero-cta">
-                    <a href="https://www.youtube.com/@TobaRana" target="_blank" class="btn btn-primary">YouTube 頻道</a>
+                    <a href="https://www.youtube.com/@RanaVTB" target="_blank" class="btn btn-primary">YouTube 頻道</a>
                     <a href="#about" class="btn btn-secondary">認識樂奈</a>
                 </div>
             </div>
@@ -1072,19 +1262,19 @@
             <p>社群連結</p>
         </div>
         <div class="links-grid">
-            <a href="https://www.youtube.com/@TobaRana" target="_blank" class="link-card reveal">
+            <a href="https://www.youtube.com/@RanaVTB" target="_blank" class="link-card reveal">
                 <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
                 <span>YOUTUBE</span>
             </a>
-            <a href="https://twitter.com/TobaRana" target="_blank" class="link-card reveal">
+            <a href="https://twitter.com/RanaVTB" target="_blank" class="link-card reveal">
                 <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
                 <span>TWITTER</span>
             </a>
-            <a href="https://www.instagram.com/tobarana/" target="_blank" class="link-card reveal">
+            <a href="https://www.instagram.com/ranavtb/" target="_blank" class="link-card reveal">
                 <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
@@ -1101,9 +1291,9 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">
+        <a href="https://yenz.tw/" target="_blank" class="footer-logo">
             <img src="assets/ainomori-300px-logo-white2.webp" alt="靛之森">
-        </div>
+        </a>
         <p>© 2026 YENZ DESIGN PRODUCTION. All rights reserved.</p>
     </footer>
 
